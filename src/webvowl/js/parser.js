@@ -140,6 +140,7 @@ module.exports = function (graph) {
 		// Inject properties for unions, intersections, ...
 		addSetOperatorProperties(combinedClassesAndDatatypes, unparsedProperties);
 		combinedProperties = combineProperties(unparsedProperties, ontologyData.propertyAttribute);
+		combineIndividuals(ontologyData.class, combinedProperties); //by lim, recycle combinedProperties
 		classMap = mapElements(combinedClassesAndDatatypes);
 		propertyMap = mapElements(combinedProperties);
 		mergeRangesOfEquivalentProperties(combinedProperties, combinedClassesAndDatatypes);
@@ -150,6 +151,33 @@ module.exports = function (graph) {
 		nodes = createNodeStructure(combinedClassesAndDatatypes, classMap);
 		properties = createPropertyStructure(combinedProperties, classMap, propertyMap);
 	};
+
+	// By Lim
+	// TODO Include the node creation
+	function combineIndividuals( baseObjects, combinations) {
+		var prototypepMap = createLowerCasePrototypeMap(propertyPrototypeMap);
+		var prototypenMap = createLowerCasePrototypeMap(nodePrototypeMap);
+
+
+		baseObjects.forEach(function (element) {
+			if (element.individuals) {
+				element.individuals.forEach(function (individual) {
+
+					var Prototype = prototypepMap.get("owl:objectproperty");
+					var property = new Prototype(graph);
+					property.domain(element.id )
+						.range( individual.iri)
+						.labelVisible(false)
+						.id( element.id + individual.iri);
+					combinations.push(property);
+
+				});
+
+			}
+		});
+		return combinations;
+	}
+
 
 	/**
 	 * @return {Array} the preprocessed nodes
@@ -164,6 +192,9 @@ module.exports = function (graph) {
 	parser.properties = function () {
 		return properties;
 	};
+
+	var
+		unique=0; //by Lim
 
 	/**
 	 * Combines the passed objects with its attributes and prototypes. This also applies
@@ -222,6 +253,7 @@ module.exports = function (graph) {
 						graph.options().pickAndPinModule().addPinnedElement(node);
 					}
 					// Create node objects for all individuals
+					var individualiri = ""; // by lim
 					if (element.individuals) {
 						element.individuals.forEach(function (individual) {
 							var individualNode = new Prototype(graph);
@@ -229,6 +261,21 @@ module.exports = function (graph) {
 								.iri(individual.iri);
 
 							node.individuals().push(individualNode);
+
+
+							// Add the individual to the  (by lim)
+							individualiri = individual.iri;
+							if (individualiri!="") { // Avoid thing objects
+								var nodeInividual = new Prototype(graph);
+								nodeInividual
+									.label(individual.labels)
+									//.label(unique++)
+									.id( individualiri)
+									.attributes(["datatype"])
+									.type("owl:Thing");
+								combinations.push(nodeInividual);
+							}
+
 						});
 					}
 
