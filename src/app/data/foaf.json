@@ -1,0 +1,146 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.2.0), http://vowl.visualdataweb.org",
+  "namespace" : [ ],
+  "header" : {
+    "languages" : [ "IRI-based" ],
+    "iri" : "http://knowitive.storage.filesystem.s3.amazonaws.com/tmp4/d5d2f20b768844d0b2f92df45f36d3fa.rdf"
+  },
+  "metrics" : {
+    "classCount" : 5,
+    "datatypeCount" : 0,
+    "objectPropertyCount" : 4,
+    "datatypePropertyCount" : 0,
+    "propertyCount" : 4,
+    "nodeCount" : 5,
+    "axiomCount" : 23,
+    "individualCount" : 3
+  },
+  "class" : [ {
+    "id" : "class1",
+    "type" : "externalclass"
+  }, {
+    "id" : "class5",
+    "type" : "externalclass"
+  }, {
+    "id" : "class2",
+    "type" : "externalclass"
+  }, {
+    "id" : "class3",
+    "type" : "externalclass"
+  }, {
+    "id" : "class4",
+    "type" : "externalclass"
+  } ],
+  "classAttribute" : [ {
+    "id" : "class1",
+    "label" : {
+      "IRI-based" : "cfdi:Comprobante"
+    },
+    "iri" : "http://www.sat.gob.mx/cfd/3#Comprobante",
+    "attributes" : [ "external" ],
+    "instances" : 0
+  }, {
+    "id" : "class5",
+    "label" : {
+      "IRI-based" : "cfdi:Receptor"
+    },
+    "iri" : "http://www.sat.gob.mx/cfd/3#Receptor",
+    "attributes" : [ "external" ],
+    "instances" : 0
+  }, {
+    "id" : "class2",
+    "label" : {
+      "IRI-based" : "folio"
+    },
+    "iri" : "http://www.sat.gob.mx/cfd/3#folio",
+    "attributes" : [ "external" ],
+    "instances" : 1,
+    "individuals" : [ {
+      "iri" : "http://www.sat.gob.mx/cfd/3#20474",
+      "labels" : {
+        "IRI-based" : "20474"
+      },
+      "annotations" : { }
+    } ]
+  }, {
+    "id" : "class3",
+    "label" : {
+      "IRI-based" : "rfc"
+    },
+    "iri" : "http://www.sat.gob.mx/cfd/3#rfc",
+    "attributes" : [ "external" ],
+    "instances" : 1,
+    "individuals" : [ {
+      "iri" : "http://www.sat.gob.mx/cfd/3#BMC0210314G6",
+      "labels" : {
+        "IRI-based" : "BMC0210314G6"
+      },
+      "annotations" : { }
+    } ]
+  }, {
+    "id" : "class4",
+    "label" : {
+      "IRI-based" : "nombre"
+    },
+    "iri" : "http://www.sat.gob.mx/cfd/3#nombre",
+    "attributes" : [ "external" ],
+    "instances" : 1,
+    "individuals" : [ {
+      "iri" : "http://www.sat.gob.mx/cfd/3#BANDAS_Y_MANGUERAS_EL_CAMINO_SA_DE_CV",
+      "labels" : {
+        "IRI-based" : "BANDAS_Y_MANGUERAS_EL_CAMINO_SA_DE_CV"
+      },
+      "annotations" : { }
+    } ]
+  } ],
+  "property" : [ {
+    "id" : "property2",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "property3",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "property4",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "property1",
+    "type" : "owl:objectProperty"
+  } ],
+  "propertyAttribute" : [ {
+    "id" : "property2",
+    "label" : {
+      "IRI-based" : "hasrfc"
+    },
+    "iri" : "http://www.sat.gob.mx/cfd/3#hasrfc",
+    "attributes" : [ "external" ],
+    "domain" : "class5",
+    "range" : "class3"
+  }, {
+    "id" : "property3",
+    "label" : {
+      "IRI-based" : "hasfolio"
+    },
+    "iri" : "http://www.sat.gob.mx/cfd/3#hasfolio",
+    "attributes" : [ "external" ],
+    "domain" : "class1",
+    "range" : "class2"
+  }, {
+    "id" : "property4",
+    "label" : {
+      "IRI-based" : "hasReceptor"
+    },
+    "iri" : "http://www.sat.gob.mx/cfd/3#hasReceptor",
+    "attributes" : [ "external" ],
+    "domain" : "class1",
+    "range" : "class5"
+  }, {
+    "id" : "property1",
+    "label" : {
+      "IRI-based" : "hasnombre"
+    },
+    "iri" : "http://www.sat.gob.mx/cfd/3#hasnombre",
+    "attributes" : [ "external" ],
+    "domain" : "class5",
+    "range" : "class4"
+  } ]
+}
