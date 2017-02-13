@@ -65,7 +65,14 @@ module.exports = function (grunt) {
 		copy: {
 			dependencies: {
 				files: [
-					{expand: true, cwd: "node_modules/d3/", src: ["d3.min.js"], dest: deployPath + "/js/"}
+					{expand: true, cwd: "node_modules/d3/", src: ["d3.min.js"], dest: deployPath + "/js/"},
+					{expand: true, cwd: "bower_components/angular/", src: ["angular.min.js"], dest: deployPath + "/js/"},
+					{expand: true, cwd: "bower_components/angular-material/", src: ["angular-material.min.css"], dest: deployPath + "/css/"},
+					{expand: true, cwd: "bower_components/angular-animate/", src: ["angular-animate.min.js"], dest: deployPath + "/js/"},
+					{expand: true, cwd: "bower_components/angular-aria/", src: ["angular-aria.min.js"], dest: deployPath + "/js/"},
+					{expand: true, cwd: "bower_components/angular-messages/", src: ["angular-messages.js"], dest: deployPath + "/js/"},
+					{expand: true, cwd: "bower_components/angular-resource/", src: ["angular-resource.min.js"], dest: deployPath + "/js/"},
+					{expand: true, cwd: "bower_components/angular-material/", src: ["angular-material.min.js"], dest: deployPath + "/js/"}
 				]
 			},
 			static: {

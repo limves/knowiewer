@@ -808,3 +808,10 @@ a#pause-button:not(.paused)::before {
 	-o-animation-timing-function: linear;
 	animation-timing-function: linear;
 }
+
+.terminal-div {
+	position:absolute;
+	left:200px;
+	width:800px;
+	height:100px;
+}
